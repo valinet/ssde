@@ -4,7 +4,7 @@
 #define SSDE_DEVICE_NAME            L"SSDE"
 
 #define SSDE_API_MAJOR_VERSION      1
-#define SSDE_API_MINOR_VERSION      0
+#define SSDE_API_MINOR_VERSION      1
 
 #define FILE_DEVICE_SELFSIGN            FILE_DEVICE_UNKNOWN
 
@@ -21,6 +21,7 @@ typedef struct SSDE_API_INFO
     USHORT Minor;
     USHORT Major;
     ULONG ArmCount;
+    ULONG Status;
 } SSDE_API_INFO;
 
 typedef struct _PPBinaryHeader {

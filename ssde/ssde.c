@@ -25,6 +25,7 @@ NTSTATUS OnApiGetInfo(PVOID, ULONG, ULONG, ULONG*);
 PSSDEWORKER Worker = NULL;
 NTSTATUS WorkerResult = STATUS_SUCCESS;
 ULONG ArmCount = 0;
+ULONG ArmWatchdog = 0;
 
 #pragma code_seg ("PAGE")
 NTSTATUS
@@ -92,6 +93,8 @@ VOID Worker_Work(_In_ PSSDEWORKER* __this)
     ULONG ResultLength = 0;
     ULONG uTag = 'ssde';
     IO_STATUS_BLOCK IoStatusBlock;
+
+    ArmWatchdog = 1;
 
     PVOID objects[2];
     objects[0] = _this->UnloadEventObject;
@@ -212,9 +215,11 @@ VOID Worker_Work(_In_ PSSDEWORKER* __this)
 
     Worker_Delete(__this);
 
-    PsTerminateSystemThread(STATUS_SUCCESS);
+    ArmWatchdog = 2;
 
     WorkerResult = Status;
+
+    PsTerminateSystemThread(STATUS_SUCCESS);
 }
 #pragma code_seg ()
 
@@ -643,6 +648,7 @@ OnApiGetInfo(
     pver->Minor = SSDE_API_MINOR_VERSION;
     pver->Major = SSDE_API_MAJOR_VERSION;
     pver->ArmCount = ArmCount;
+    pver->Status = ArmWatchdog;
 
     *NumRet = sizeof(*pver);
     return STATUS_SUCCESS;

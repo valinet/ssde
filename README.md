@@ -48,3 +48,11 @@ Here, you have to install the driver. My command for signing it is (do this befo
 signtool sign /fd sha256 /a /ac .\localhost-root-ca.der /f .\localhost-km.pfx /p password /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp ssde.sys
 ```
 
+#### 2.6 Persist CustomKernelSigners
+
+The command I use for registering the service is:
+
+```
+sc create ssde binpath=%windir%\system32\drivers\ssde.sys type=kernel start=boot error=normal
+```
+

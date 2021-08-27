@@ -56,7 +56,8 @@ int __cdecl wmain(void)
         else {
             printf("API version is %u.%u\n", info.Major, info.Minor);
             printf("Arm count is %lu\n", info.ArmCount);
-            printf("Arm watchdog status is %lu", info.Status);
+            printf("Arm watchdog status is %lu\n", info.Status);
+            printf("License tamper state is %lu", info.TamperState);
             ec = ERROR_SUCCESS;
         }
 

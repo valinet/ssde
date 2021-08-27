@@ -35,4 +35,6 @@ NTSTATUS NTAPI ExUpdateLicenseData(
     _In_ ULONG cbBytes,
     _In_reads_bytes_(cbBytes) PVOID lpBytes
 );
+
+BOOLEAN ExGetLicenseTamperState(ULONG* TamperState);
 #endif

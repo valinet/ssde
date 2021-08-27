@@ -22,6 +22,7 @@ typedef struct SSDE_API_INFO
     USHORT Major;
     ULONG ArmCount;
     ULONG Status;
+    ULONG TamperState;
 } SSDE_API_INFO;
 
 typedef struct _PPBinaryHeader {

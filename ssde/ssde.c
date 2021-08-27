@@ -649,6 +649,7 @@ OnApiGetInfo(
     pver->Major = SSDE_API_MAJOR_VERSION;
     pver->ArmCount = ArmCount;
     pver->Status = ArmWatchdog;
+    ExGetLicenseTamperState(&(pver->TamperState));
 
     *NumRet = sizeof(*pver);
     return STATUS_SUCCESS;

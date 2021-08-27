@@ -1,15 +1,3 @@
-
-/*  ************************************************************************  *
- *                                 entry.cpp                                  *
- *  ************************************************************************  */
-
- /*  Standard inclusion for kernel-mode programming  */
-
- /*  Begin with the usual header for kernel-mode Windows programming. Be nice
-     to readers who expect demonstration code to compile with /Wall even if
-     Microsoft's own headers don't. Those who worry about such things likely
-     already know what warnings these numbers select.  */
-
 #pragma     warning (disable : 4514 4710 4711)
 #pragma     warning (push)
 #pragma     warning (disable : 4365)
@@ -17,26 +5,8 @@
 #include    <wdm.h>
 #pragma     warning (pop)
 
-     /*  Things the author happens to like and prefers not to be without  */
-
-#define     AND &&
-#define     NOT !
-#define     OR  ||
-
-/*  Header shared with Win32 application  */
-
 #include    "../common.h"
 #include    "ssde.h"
-
-/*  ************************************************************************  */
-/*  Forward references	*/
-
-/*  Microsoft's tools for static code analysis complain if various functions
-    don't have very particular forward declarations. We don't have much
-    choice but to go along with this caprice from tools that can be more
-    trouble than they're worth. After all, we do want that anyone who ends
-    up with this code can build it with Microsoft's tools and not have to
-    wade through complaints.  */
 
 DRIVER_INITIALIZE DriverEntry;
 
@@ -665,7 +635,7 @@ OnApiGetInfo(
 
     SSDE_API_INFO* pver;
 
-    if (InLen != 0 OR OutLen != sizeof(*pver) OR Buffer == NULL) {
+    if (InLen != 0 || OutLen != sizeof(*pver) || Buffer == NULL) {
         return STATUS_INVALID_PARAMETER;
     }
 

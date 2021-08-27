@@ -89,6 +89,7 @@ LONG HandlePolicyBinary(
                     *uEdit = *(PULONG)pValData;
                 }
                 AllowConfigurablePolicyCustomKernelSignerSet = TRUE;
+                break;
             }
             else {
                 return STATUS_INVALID_PARAMETER;

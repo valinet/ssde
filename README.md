@@ -19,6 +19,8 @@ Also, I also put together a helper app that interrogates this new driver and obt
 
 Go to [Releases](https://github.com/valinet/ssde/releases) to get precompiled files that you can use.
 
+I have personally tested this and it works on Windows 11 build 22000.1.
+
 ## How to?
 
 Please follow the tutorial in [2] and apply what I describe in my notes below.
